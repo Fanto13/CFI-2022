@@ -1,5 +1,3 @@
-# CFI - 2022
-
 ## Software
 * [Java JDK](https://www.oracle.com/java/technologies/downloads/)
 * [IntelliJ Idea](https://www.jetbrains.com/idea/download/)
