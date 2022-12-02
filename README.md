@@ -1,4 +1,4 @@
-# cfi22-23
+# CFI - 2022
 
 ## Software
 * [Java JDK](https://www.oracle.com/java/technologies/downloads/)
