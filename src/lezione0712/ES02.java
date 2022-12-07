@@ -14,10 +14,12 @@ public class ES02 {
     }
 
     public static int max(int a, int b) {
+        int r;
         if (a > b) {
-            return a;
+            r = a;
         } else {
-            return b;
+            r = b;
         }
+        return r;
     }
 }
