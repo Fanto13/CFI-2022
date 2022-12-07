@@ -1,4 +1,4 @@
-package lezione221205;
+package lezione0512;
 
 public class ES03 {
     public static void main(String[] args) {
