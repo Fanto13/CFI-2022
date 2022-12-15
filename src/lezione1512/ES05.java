@@ -21,8 +21,16 @@ public class ES05 {
         return ret;
     }
 
+    public static int powerSum(int[] digits, int exp) {
+        int sum = 0;
+        for (int digit : digits) {
+            sum += Math.pow(digit, exp);
+        }
+        return sum;
+    }
+
     public static boolean isArmstrongNumber(int n) {
-        return true;
+        return (powerSum(digits(n), 3) == n);
     }
 
     public static void main(String[] args) {

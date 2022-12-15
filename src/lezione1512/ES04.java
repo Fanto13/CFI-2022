@@ -2,13 +2,6 @@ package lezione1512;
 
 public class ES04 {
 
-    public static void digits(int n) {
-        while (n > 0) {
-            System.out.println(n % 10);
-            n /= 10;
-        }
-    }
-
     public static boolean isArmstrongNumber(int n) {
         int sum = 0;
         int tmp = n;
