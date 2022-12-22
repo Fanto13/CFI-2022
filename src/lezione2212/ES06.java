@@ -26,6 +26,18 @@ public class ES06 {
         return union;
     }
 
+    public static Set<Integer> intersection(Set<Integer> first, Set<Integer> second) {
+        Set<Integer> intersection = new HashSet<>(first);
+        intersection.retainAll(second);
+        return intersection;
+    }
+
+    public static Set<Integer> union(Set<Integer> first, Set<Integer> second) {
+        Set<Integer> union = new HashSet<>(first);
+        union.addAll(second);
+        return union;
+    }
+
     public static void main(String[] args) {
         Set<Integer> s1 = new HashSet<>(Set.of(23, 45, 11, 22, 88));
         Set<Integer> s2 = new HashSet<>(Set.of(11, 22, 63, 78, 37));
