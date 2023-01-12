@@ -1,6 +1,6 @@
-package lezione1201;
+package lezione1201.geometry;
 
-public class Circle implements Movable {
+public class Circle implements Movable, Computable {
     Point center;
     double radius;
 
@@ -36,5 +36,15 @@ public class Circle implements Movable {
 
     public void translate(double x, double y) {
         this.center.translate(x, y);
+    }
+
+    @Override
+    public double getArea() {
+        return radius * radius * Math.PI;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * radius * Math.PI;
     }
 }

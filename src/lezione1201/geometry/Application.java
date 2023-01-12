@@ -1,7 +1,4 @@
-package lezione1201;
-
-import java.util.ArrayList;
-import java.util.List;
+package lezione1201.geometry;
 
 public class Application {
     public static void main(String[] args) {
@@ -9,18 +6,17 @@ public class Application {
         Circle c = new Circle(new Point(2,3), 10);
         Rectangle r = new Rectangle(new Point(0,0), new Point(10,10));
 
-        List<Movable> l = new ArrayList<>();
-        l.add(p);
-        l.add(c);
-        l.add(r);
+        Movable m = r;
 
-        System.out.println(p);
-        System.out.println(c);
-        System.out.println(r);
-
-        for (Movable m : l) {
-            m.translate(1,1);
+        if (m instanceof Circle) {
+            Circle c2 = (Circle) m;
+            c2.getArea();
         }
+
+
+
+
+
 
         System.out.println(p);
         System.out.println(c);

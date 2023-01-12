@@ -1,4 +1,4 @@
-package lezione1201;
+package lezione1201.geometry;
 
 public class Point implements Movable {
     double x;
