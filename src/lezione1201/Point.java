@@ -1,6 +1,6 @@
 package lezione1201;
 
-public class Point {
+public class Point implements Movable {
     double x;
     double y;
 
@@ -28,5 +28,15 @@ public class Point {
     @Override
     public String toString() {
         return "Point{" + "x=" + x + ", y=" + y + '}';
+    }
+
+    public void move(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void translate(double x, double y) {
+        this.x += x;
+        this.y += y;
     }
 }

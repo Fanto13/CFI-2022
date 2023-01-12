@@ -1,6 +1,6 @@
 package lezione1201;
 
-public class Rectangle {
+public class Rectangle implements Movable {
     Point lowerLeft;
     Point upperRight;
 
@@ -28,5 +28,14 @@ public class Rectangle {
     @Override
     public String toString() {
         return "Rectangle{" + "lowerLeft=" + lowerLeft + ", upperRight=" + upperRight + '}';
+    }
+
+    public void move(double x, double y) {
+
+    }
+
+    public void translate(double x, double y) {
+        this.upperRight.translate(x, y);
+        this.lowerLeft.translate(x, y);
     }
 }

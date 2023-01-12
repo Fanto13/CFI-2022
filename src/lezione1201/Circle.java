@@ -1,6 +1,6 @@
 package lezione1201;
 
-public class Circle {
+public class Circle implements Movable {
     Point center;
     double radius;
 
@@ -28,5 +28,13 @@ public class Circle {
     @Override
     public String toString() {
         return "Circle{" + "center=" + center + ", radius=" + radius + '}';
+    }
+
+    public void move(double x, double y) {
+        this.center.move(x, y);
+    }
+
+    public void translate(double x, double y) {
+        this.center.translate(x, y);
     }
 }
