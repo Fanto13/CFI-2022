@@ -20,7 +20,7 @@ package lezione1201.bank;
  */
 public class TestApp {
     public static void main(String[] args) {
-        BankAccount a1 = new BankAccountIntesa("IT472121100900000002356987411", 10000);
+        BankAccount a1 = new BankAccountUnicredit("IT472121100900000002356987411", 10000);
         BankAccount a2 = new BankAccountUnicredit("DE435345300900000002342422345", 10000);
         System.out.println(a1);
 
