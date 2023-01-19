@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="376.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.divider.HelloController">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="lvLeft" layoutX="27.0" layoutY="23.0" prefHeight="282.0" prefWidth="191.0" />
+            <ListView fx:id="lvRight" layoutX="372.0" layoutY="23.0" prefHeight="282.0" prefWidth="191.0" />
+            <Button fx:id="btRight" layoutX="236.0" layoutY="124.0" mnemonicParsing="false" onAction="#onRightButtonClick" prefHeight="25.0" prefWidth="119.0" text="-&gt;" />
+            <Button fx:id="btLeft" layoutX="235.0" layoutY="161.0" mnemonicParsing="false" onAction="#onLeftButtonClick" prefHeight="25.0" prefWidth="120.0" text="&lt;-" />
+            <Button fx:id="btSave" layoutX="235.0" layoutY="205.0" mnemonicParsing="false" onAction="#onSaveButtonClick" prefHeight="25.0" prefWidth="121.0" text="Save!" />
+         </children>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuOpen" mnemonicParsing="false" onAction="#onMenuOpenClick" text="Open..." />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <VBox prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator prefWidth="200.0" />
+            <Label text="Label" />
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
