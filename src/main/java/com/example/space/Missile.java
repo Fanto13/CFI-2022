@@ -61,13 +61,11 @@ public class Missile {
     }
 
     public void paint(GraphicsContext gc) {
-        //gc.drawImage(image, x, y);
-        gc.setFill(Color.WHITE);
-        gc.fillOval(x, y, 10, 10);
+        gc.drawImage(image, x, y);
     }
 
     public Rectangle2D getBounds() {
-        return new Rectangle2D(x, y, 10, 10);
+        return new Rectangle2D(x, y, image.getWidth(), image.getHeight());
     }
 
     @Override

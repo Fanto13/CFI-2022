@@ -61,13 +61,11 @@ public class Alien {
     }
 
     public void paint(GraphicsContext gc) {
-        //gc.drawImage(image, x, y);
-        gc.setFill(Color.RED);
-        gc.fillOval(x, y, 40, 40);
+        gc.drawImage(image, x, y);
     }
 
     public Rectangle2D getBounds() {
-        return new Rectangle2D(x, y, 40, 40);
+        return new Rectangle2D(x, y, image.getWidth(), image.getHeight());
     }
 
     @Override
