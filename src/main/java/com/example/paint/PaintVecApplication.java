@@ -39,19 +39,21 @@ public class PaintVecApplication extends Application {
     public void start(Stage primaryStage) {
         circles = new ArrayList<>();
         HBox hbox = new HBox();
-        hbox.setSpacing(10);
-        hbox.setAlignment(Pos.BASELINE_CENTER);
+        hbox.setSpacing(30);
+        hbox.setAlignment(Pos.BOTTOM_CENTER);
         hbox.setPadding(new Insets(10));
         slider = new Slider(1, 50, 10);
+        slider.setTooltip(new Tooltip("Circle Radius"));
         slider.setShowTickMarks(true);
         cpForeground = new ColorPicker();
+        cpForeground.setTooltip(new Tooltip("Circle Color"));
         cpBackground = new ColorPicker();
         cpBackground.setOnAction(event -> {
             paint();
         });
-        cpForeground.setTooltip(new Tooltip("Select Foreground Color"));
-        cpBackground.setTooltip(new Tooltip("Select Background Color"));
-        hbox.getChildren().addAll(cpForeground, cpBackground, slider);
+        cpBackground.setTooltip(new Tooltip("Background Color"));
+        cpBackground.setValue(Color.web("#456080"));
+        hbox.getChildren().addAll(cpBackground, cpForeground, slider);
         canvas = new Canvas(600, 600);
         canvasPane = new Pane();
         canvasPane.getChildren().add(canvas);
