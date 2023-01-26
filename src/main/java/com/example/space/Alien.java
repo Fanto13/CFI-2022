@@ -5,14 +5,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-public class Missile {
+public class Alien {
     double x;
     double y;
     double vx;
     double vy;
     Image image;
 
-    public Missile(double x, double y, double vx, double vy, Image image) {
+    public Alien(double x, double y, double vx, double vy, Image image) {
         this.x = x;
         this.y = y;
         this.vx = vx;
@@ -62,12 +62,12 @@ public class Missile {
 
     public void paint(GraphicsContext gc) {
         //gc.drawImage(image, x, y);
-        gc.setFill(Color.WHITE);
-        gc.fillOval(x, y, 10, 10);
+        gc.setFill(Color.RED);
+        gc.fillOval(x, y, 40, 40);
     }
 
     public Rectangle2D getBounds() {
-        return new Rectangle2D(x, y, 10, 10);
+        return new Rectangle2D(x, y, 40, 40);
     }
 
     @Override

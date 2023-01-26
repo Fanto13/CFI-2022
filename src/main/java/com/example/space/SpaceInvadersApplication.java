@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -25,6 +26,7 @@ public class SpaceInvadersApplication extends Application {
     Timeline timeline;
     SpaceShip ship;
     List<Missile> missiles;
+    List<Alien> aliens;
 
     public static void main(String[] args) {
         launch(args);
@@ -33,11 +35,6 @@ public class SpaceInvadersApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         backgroundImage = new Image(getClass().getResourceAsStream("background.jpg"), 1200, 800, false, true);
-        // ship
-        Image image = new Image(getClass().getResourceAsStream("spaceship.png"), 100, 100, true, true);
-        ship = new SpaceShip(550, 650, image);
-        // missiles
-        missiles = new ArrayList<>();
         // canvas
         canvas = new Canvas(1200, 800);
         canvasPane = new Pane();
@@ -54,6 +51,7 @@ public class SpaceInvadersApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+        initializeGameObjects();
         initializeTimer();
     }
 
@@ -64,6 +62,21 @@ public class SpaceInvadersApplication extends Application {
         timeline.play();
     }
 
+    public void initializeGameObjects() {
+        // ship
+        Image image = new Image(getClass().getResourceAsStream("spaceship.png"), 100, 100, true, true);
+        ship = new SpaceShip(550, 650, image);
+        // missiles
+        missiles = new ArrayList<>();
+        // aliens
+        aliens = new ArrayList<>();
+        for (int row = 0; row < 5; row++) {
+            for (int col = 0; col < 7; col++) {
+                aliens.add(new Alien(200 + 120 * col, 100 + 70 * row, 0,0, null));
+            }
+        }
+    }
+
     public void mainLoop() {
         for (ListIterator<Missile> i = missiles.listIterator(); i.hasNext();) {
             Missile m = i.next();
@@ -72,6 +85,29 @@ public class SpaceInvadersApplication extends Application {
                 i.remove();
             }
         }
+
+        for (ListIterator<Alien> i = aliens.listIterator(); i.hasNext();) {
+            Alien a = i.next();
+            for (Missile m : missiles) {
+                if (a.getBounds().intersects(m.getBounds())) {
+                    i.remove();
+                }
+            }
+        }
+
+        if (aliens.size() == 0) {
+            timeline.stop();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("Good game. Someone won! Click OK to restart.");
+            alert.setOnHidden(evt -> {
+                initializeGameObjects();
+                initializeTimer();
+            });
+            alert.show();
+        }
+
         paint();
     }
 
@@ -86,10 +122,8 @@ public class SpaceInvadersApplication extends Application {
             m.paint(gc);
         }
         // aliens
-        /*
         for (Alien a : aliens) {
-            a.paint();
+            a.paint(gc);
         }
-        */
     }
 }
