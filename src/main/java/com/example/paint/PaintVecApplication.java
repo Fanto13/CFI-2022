@@ -74,7 +74,6 @@ public class PaintVecApplication extends Application {
         primaryStage.setTitle("Paint");
         primaryStage.setScene(scene);
         primaryStage.show();
-        canvasPane.requestFocus();
         initializeTimer();
     }
 
