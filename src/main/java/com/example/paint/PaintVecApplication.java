@@ -80,7 +80,7 @@ public class PaintVecApplication extends Application {
 
     public void initializeTimer() {
         timeline = new Timeline(new KeyFrame(Duration.ZERO, event -> shortenList()),
-                new KeyFrame(Duration.millis(100)));
+                new KeyFrame(Duration.millis(20)));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
@@ -97,12 +97,8 @@ public class PaintVecApplication extends Application {
     }
 
     public void shortenList() {
-        try {
-            for (int i = 0; i < 10; i++) {
-                circles.remove(0);
-            }
-        } catch (IndexOutOfBoundsException ignored) {
-
+        if (circles.size() > 0) {
+            circles.remove(0);
         }
         paint();
     }
