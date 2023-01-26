@@ -3,17 +3,20 @@ package com.example.space;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
-public class SpaceShip {
+public class Missile {
     double x;
     double y;
-    double life;
+    double vx;
+    double vy;
     Image image;
 
-    public SpaceShip(double x, double y, Image image) {
+    public Missile(double x, double y, double vx, double vy, Image image) {
         this.x = x;
         this.y = y;
-        this.life = 1.0;
+        this.vx = vx;
+        this.vy = vy;
         this.image = image;
     }
 
@@ -33,12 +36,20 @@ public class SpaceShip {
         this.y = y;
     }
 
-    public double getLife() {
-        return life;
+    public double getVx() {
+        return vx;
     }
 
-    public void setLife(double life) {
-        this.life = life;
+    public void setVx(double vx) {
+        this.vx = vx;
+    }
+
+    public double getVy() {
+        return vy;
+    }
+
+    public void setVy(double vy) {
+        this.vy = vy;
     }
 
     public Image getImage() {
@@ -50,7 +61,9 @@ public class SpaceShip {
     }
 
     public void paint(GraphicsContext gc) {
-        gc.drawImage(image, x, y);
+        //gc.drawImage(image, x, y);
+        gc.setFill(Color.WHITE);
+        gc.fillOval(x, y, 10, 10);
     }
 
     public Rectangle2D getBounds() {
@@ -59,6 +72,6 @@ public class SpaceShip {
 
     @Override
     public String toString() {
-        return "SpaceShip{" + "x=" + x + ", y=" + y + ", life=" + life + ", image=" + image + '}';
+        return "Missile{" + "x=" + x + ", y=" + y + ", vx=" + vx + ", vy=" + vy + ", image=" + image + '}';
     }
 }
