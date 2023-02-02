@@ -2,10 +2,9 @@ package com.example.moneymanager;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
@@ -15,6 +14,14 @@ import javafx.util.converter.LocalDateStringConverter;
 import java.time.LocalDate;
 
 public class MoneyController {
+    @FXML
+    private DatePicker dpDate;
+
+    @FXML
+    private TextField tfAmount;
+
+    @FXML
+    private TextField tfDescription;
 
     @FXML
     TableView<Expense> tbExpenses;
@@ -46,6 +53,17 @@ public class MoneyController {
         tbExpenses.setEditable(true);
         tbExpenses.setTableMenuButtonVisible(true);
         tbExpenses.setItems(expenses);
+    }
+
+    @FXML
+    void onAdd(ActionEvent event) {
+        Expense e = new Expense(dpDate.getValue(), tfDescription.getText(), Double.parseDouble(tfAmount.getText()));
+        expenses.add(e);
+    }
+
+    @FXML
+    void onRemove(ActionEvent event) {
+
     }
 
 }

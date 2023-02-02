@@ -9,10 +9,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moneymanager.MoneyController">
    <children>
       <TableView fx:id="tbExpenses" layoutX="26.0" layoutY="114.0" prefHeight="368.0" prefWidth="532.0" />
-      <DatePicker layoutX="25.0" layoutY="22.0" />
-      <TextField layoutX="396.0" layoutY="22.0" promptText="Amount" />
-      <TextField layoutX="222.0" layoutY="22.0" promptText="Description" />
-      <Button layoutX="222.0" layoutY="64.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Add" />
-      <Button layoutX="313.0" layoutY="64.0" mnemonicParsing="false" prefWidth="70.0" text="Remove" />
+      <DatePicker fx:id="dpDate" layoutX="25.0" layoutY="22.0" />
+      <TextField fx:id="tfAmount" layoutX="396.0" layoutY="22.0" promptText="Amount" />
+      <TextField fx:id="tfDescription" layoutX="222.0" layoutY="22.0" promptText="Description" />
+      <Button layoutX="222.0" layoutY="64.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="25.0" prefWidth="70.0" text="Add" />
+      <Button layoutX="313.0" layoutY="64.0" mnemonicParsing="false" onAction="#onRemove" prefWidth="70.0" text="Remove" />
    </children>
 </AnchorPane>

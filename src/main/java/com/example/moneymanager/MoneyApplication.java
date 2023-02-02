@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class MoneyApplication extends Application {
-    VBox root;
 
     public static void main(String[] args) {
         launch(args);
