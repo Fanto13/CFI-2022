@@ -93,14 +93,14 @@ public class MoneyController {
                 try (ResultSet rs = getPlanes.executeQuery()) {
                     while (rs.next()) {
                         expenses.add(new Expense(
-                                convertSQLDateToLocalDate(rs.getDate("firstFlight")),
-                                rs.getString("name"),
-                                rs.getDouble("length")));
+                                convertSQLDateToLocalDate(rs.getDate("date")),
+                                rs.getString("description"),
+                                rs.getDouble("amount")));
                     }
                 }
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, "Database Error").showAndWait();
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
         }
     }
 
