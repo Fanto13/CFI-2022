@@ -1,5 +1,7 @@
 package com.example.moneymanager;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,9 +13,15 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 
+import java.sql.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.TimeZone;
 
 public class MoneyController {
+    public static final String JDBC_Driver_MySQL = "com.mysql.cj.jdbc.Driver";
+    public static final String JDBC_URL_MySQL = "jdbc:mysql://localhost:3306/jdbc_schema?user=nicola&password=qwertyuio&serverTimezone=" + TimeZone.getDefault().getID();
+
     @FXML
     private DatePicker dpDate;
 
@@ -26,10 +34,13 @@ public class MoneyController {
     @FXML
     TableView<Expense> tbExpenses;
     ObservableList<Expense> expenses;
+    private HikariDataSource dataSource;
 
     public void initialize() {
         expenses = FXCollections.observableArrayList();
-        expenses.add(new Expense(LocalDate.MAX, "bella zio", 100));
+        dbConnection();
+        loadFromDB();
+
         TableColumn<Expense, LocalDate> date = new TableColumn<>("Date");
         TableColumn<Expense, String> description = new TableColumn<>("Description");
         TableColumn<Expense, Double> amount = new TableColumn<>("Amount (EUR)");
@@ -67,4 +78,34 @@ public class MoneyController {
         expenses.remove(tbExpenses.getSelectionModel().getSelectedItem());
     }
 
+    private void dbConnection() {
+        HikariConfig config = new HikariConfig();
+        config.setDriverClassName(JDBC_Driver_MySQL);
+        config.setJdbcUrl(JDBC_URL_MySQL);
+        config.setLeakDetectionThreshold(2000);
+        dataSource = new HikariDataSource(config);
+    }
+
+    private void loadFromDB() {
+        try (Connection connection = dataSource.getConnection()) {
+            expenses.clear();
+            try (PreparedStatement getPlanes = connection.prepareStatement("SELECT * FROM expenses")) {
+                try (ResultSet rs = getPlanes.executeQuery()) {
+                    while (rs.next()) {
+                        expenses.add(new Expense(
+                                convertSQLDateToLocalDate(rs.getDate("firstFlight")),
+                                rs.getString("name"),
+                                rs.getDouble("length")));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Database Error").showAndWait();
+        }
+    }
+
+    public LocalDate convertSQLDateToLocalDate(Date SQLDate) {
+        java.util.Date date = new java.util.Date(SQLDate.getTime());
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 }
