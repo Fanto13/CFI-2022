@@ -9,21 +9,12 @@ __pycache__/
 
 # IntelliJ #
 ############
-javafx-code/.idea/
-javafx-code/.gradle/
-javafx-code/gradle/
-javafx-code/build/
-javafx-code/out/
-javafx-code/gradlew*
-
-java-code/.idea/
-java-code/.gradle/
-java-code/gradle/
-java-code/build/
-java-code/out/
-java-code/gradlew*
-localmods/
 .idea/
+.gradle/
+gradle/
+build/
+out/
+gradlew*
 
 # Packages #
 ############

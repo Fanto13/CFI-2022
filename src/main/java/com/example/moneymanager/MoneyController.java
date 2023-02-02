@@ -57,13 +57,14 @@ public class MoneyController {
 
     @FXML
     void onAdd(ActionEvent event) {
-        Expense e = new Expense(dpDate.getValue(), tfDescription.getText(), Double.parseDouble(tfAmount.getText()));
-        expenses.add(e);
+        Expense expense = new Expense(dpDate.getValue(), tfDescription.getText(),
+                Double.parseDouble(tfAmount.getText()));
+        expenses.add(expense);
     }
 
     @FXML
     void onRemove(ActionEvent event) {
-
+        expenses.remove(tbExpenses.getSelectionModel().getSelectedItem());
     }
 
 }
