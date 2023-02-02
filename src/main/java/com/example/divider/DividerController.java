@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-public class HelloController {
+public class DividerController {
 
     @FXML
     private Button btLeft;

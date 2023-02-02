@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class DividerApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("divider-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DividerApplication.class.getResource("divider-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Team Divider");
         stage.setScene(scene);
