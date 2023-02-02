@@ -12,3 +12,4 @@
 ## Web
 * [https://www.w3resource.com/java-exercises/](https://www.w3resource.com/java-exercises/)
 * [https://github.com/k33ptoo/School-Management-System-JavaFX](https://github.com/k33ptoo/School-Management-System-JavaFX)
+* [https://github.com/AlmasB/FXTutorials](https://github.com/AlmasB/FXTutorials)
