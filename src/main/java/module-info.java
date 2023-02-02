@@ -1,4 +1,4 @@
-open module com.example {
+open module com.ifts {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
