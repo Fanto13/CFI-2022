@@ -4,14 +4,31 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Expense {
+    int idExpense;
     LocalDate date;
     String description;
     Double amount;
 
-    public Expense(LocalDate date, String description, double amount) {
+    public Expense(LocalDate date, String description, Double amount) {
+        this.idExpense = 0;
         this.date = date;
         this.description = description;
         this.amount = amount;
+    }
+
+    public Expense(int idExpense, LocalDate date, String description, Double amount) {
+        this.idExpense = idExpense;
+        this.date = date;
+        this.description = description;
+        this.amount = amount;
+    }
+
+    public int getIdExpense() {
+        return idExpense;
+    }
+
+    public void setIdExpense(int idExpense) {
+        this.idExpense = idExpense;
     }
 
     public LocalDate getDate() {
@@ -55,6 +72,6 @@ public class Expense {
 
     @Override
     public String toString() {
-        return "Expense{" + "date=" + date + ", description='" + description + '\'' + ", amount=" + amount + '}';
+        return "Expense{" + "idExpense=" + idExpense + ", date=" + date + ", description='" + description + '\'' + ", amount=" + amount + '}';
     }
 }

@@ -50,8 +50,9 @@ public class MoneyController {
              ResultSet rs = preparedStatement.executeQuery()) {
             expenses.clear();
             while (rs.next()) {
-                expenses.add(new Expense(convertSQLDateToLocalDate(
-                        rs.getDate("date")),
+                expenses.add(new Expense(
+                        rs.getInt("idExpense"),
+                        convertSQLDateToLocalDate(rs.getDate("date")),
                         rs.getString("description"),
                         rs.getDouble("amount")));
             }
@@ -68,25 +69,72 @@ public class MoneyController {
     void setupTable() {
         tcDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tcDate.setCellFactory(TextFieldTableCell.forTableColumn(new LocalDateStringConverter()));
+        tcDate.setOnEditCommit(e -> {
+            try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE expenses SET date=? WHERE idExpense=?")) {
+                preparedStatement.setDate(1, Date.valueOf(e.getNewValue()));
+                preparedStatement.setInt(2, e.getRowValue().getIdExpense());
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, "Database Error").showAndWait();
+            }
+        });
         tcDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
         tcDescription.setCellFactory(TextFieldTableCell.forTableColumn());
+        tcDescription.setOnEditCommit(e -> {
+            try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE expenses SET description=? WHERE idExpense=?")) {
+                preparedStatement.setString(1, e.getNewValue());
+                preparedStatement.setInt(2, e.getRowValue().getIdExpense());
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                new Alert(Alert.AlertType.ERROR, "Database Error").showAndWait();
+            }
+        });
         tcAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
         tcAmount.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+        tcAmount.setOnEditCommit(e -> {
+            try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("UPDATE expenses SET amount=? WHERE idExpense=?")) {
+                preparedStatement.setDouble(1, e.getNewValue());
+                preparedStatement.setInt(2, e.getRowValue().getIdExpense());
+                preparedStatement.executeUpdate();
+            } catch (SQLException ex) {
+                new Alert(Alert.AlertType.ERROR, "Database Error").showAndWait();
+            }
+        });
         expenses = FXCollections.observableArrayList();
         tvExpenses.setItems(expenses);
         tvExpenses.setEditable(true);
     }
 
+
     @FXML
     void onAdd() {
-        expenses.add(new Expense(
-                dpDate.getValue(),
-                tfDescription.getText(),
-                Double.parseDouble(tfAmount.getText())));
+        Expense expense = new Expense(dpDate.getValue(), tfDescription.getText(), Double.parseDouble(tfAmount.getText()));
+        try (Connection connection = dataSource.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO expenses (idExpense, date, description, amount) VALUES (?, ?, ?, ?)")) {
+            preparedStatement.setInt(1, expense.getIdExpense());
+            preparedStatement.setDate(2, Date.valueOf(expense.getDate()));
+            preparedStatement.setString(3, expense.getDescription());
+            preparedStatement.setDouble(4, expense.getAmount());
+            preparedStatement.executeUpdate();
+            expenses.add(expense);
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "SQL Error").showAndWait();
+        }
     }
 
     @FXML
     void onRemove() {
-        expenses.remove(tvExpenses.getSelectionModel().getSelectedItem());
+        Expense selectedExpense = tvExpenses.getSelectionModel().getSelectedItem();
+        if (selectedExpense == null) return;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM expenses WHERE idExpense=?")) {
+            preparedStatement.setInt(1, selectedExpense.getIdExpense());
+            preparedStatement.executeUpdate();
+            expenses.remove(selectedExpense);
+        } catch (IndexOutOfBoundsException | SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "SQL Error").showAndWait();
+        }
     }
 }
