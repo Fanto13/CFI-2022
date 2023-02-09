@@ -1,11 +1,12 @@
-package com.ifts.moneymanager;
+package com.ifts.expenses;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Expense {
     LocalDate date;
     String description;
-    double amount;
+    Double amount;
 
     public Expense(LocalDate date, String description, double amount) {
         this.date = date;
@@ -29,12 +30,27 @@ public class Expense {
         this.description = description;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Expense expense = (Expense) o;
+        return Objects.equals(date, expense.date) && Objects.equals(description, expense.description) && Objects.equals(amount, expense.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, description, amount);
     }
 
     @Override

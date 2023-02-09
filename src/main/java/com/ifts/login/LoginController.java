@@ -30,7 +30,7 @@ public class LoginController {
             new Alert(Alert.AlertType.INFORMATION, "Login successful!").showAndWait();
             /*
             Eventually change scene
-            Parent root = FXMLLoader.load(getClass().getResource("money-view.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("expenses-view.fxml"));
             Scene scene = new Scene(root);
             Stage primaryStage = (Stage)tfPassword.getScene().getWindow();
             primaryStage.setTitle("Money Manager");
