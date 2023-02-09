@@ -74,6 +74,7 @@ public class MoneyController {
         tcAmount.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
         expenses = FXCollections.observableArrayList();
         tvExpenses.setItems(expenses);
+        tvExpenses.setEditable(true);
     }
 
     @FXML
