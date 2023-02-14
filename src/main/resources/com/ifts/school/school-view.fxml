@@ -11,7 +11,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ifts.school.SchoolController">
    <children>
-      <SplitPane dividerPositions="0.23308270676691728" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+      <SplitPane fx:id="splitPane" dividerPositions="0.23308270676691728" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
          <items>
             <AnchorPane prefHeight="598.0" prefWidth="364.0" style="-fx-background-color: FFFFFF;">
                <children>
@@ -24,7 +24,7 @@
                      </image></ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="598.0" prefWidth="669.0" />
+            <AnchorPane fx:id="rightPane" prefHeight="598.0" prefWidth="669.0" />
          </items>
       </SplitPane>
       <HBox prefHeight="0.0" prefWidth="800.0" />
