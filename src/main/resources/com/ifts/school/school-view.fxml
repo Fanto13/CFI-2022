@@ -20,7 +20,7 @@
                   <Button layoutX="32.0" layoutY="238.0" mnemonicParsing="false" onAction="#onDashboard" prefHeight="25.0" prefWidth="120.0" text="Dashboard" />
                   <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="27.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@school.jpg" />
+                        <Image url="@images/school.jpg" />
                      </image></ImageView>
                </children>
             </AnchorPane>
