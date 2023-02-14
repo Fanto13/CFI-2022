@@ -1,4 +1,4 @@
-package com.ifts.school;
+package com.ifts.school.controllers;
 
 public class StudentsController {
 }

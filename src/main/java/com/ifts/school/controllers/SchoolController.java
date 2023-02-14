@@ -1,4 +1,4 @@
-package com.ifts.school;
+package com.ifts.school.controllers;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
