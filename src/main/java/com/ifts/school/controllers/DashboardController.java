@@ -1,4 +1,4 @@
 package com.ifts.school.controllers;
 
-public class DashboardController {
+public class DashboardController extends DataSourceController {
 }
