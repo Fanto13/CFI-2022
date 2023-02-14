@@ -8,16 +8,16 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
-import javafx.stage.Window;
-import javafx.util.Pair;
 
 import java.io.IOException;
 
-public class ClassDialog extends Dialog<SchoolClass> {
-    @FXML private TextField tfPassword;
-    @FXML private TextField tfUsername;
+public class NewClassDialog extends Dialog<SchoolClass> {
 
-    public ClassDialog() throws IOException {
+    @FXML private TextField tfCoordinator;
+    @FXML private TextField tfName;
+    @FXML private TextField tfRoom;
+
+    public NewClassDialog() throws IOException {
         super();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("newclass-view.fxml"));
@@ -29,8 +29,12 @@ public class ClassDialog extends Dialog<SchoolClass> {
         setResizable(false);
         initModality(Modality.APPLICATION_MODAL);
         setResultConverter(buttonType -> {
-            if (buttonType == ButtonType.APPLY) {
-                //return new SchoolClass();
+            if (buttonType == ButtonType.OK) {
+                return new SchoolClass(
+                        0,
+                        tfName.getText(),
+                        tfRoom.getText(),
+                        tfCoordinator.getText());
             }
             return null;
         });
