@@ -1,22 +1,16 @@
 package com.ifts.school.controllers;
 
-import com.ifts.school.controllers.ClassesController;
-import com.ifts.school.controllers.DataSourceController;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.TimeZone;
 
-public class SchoolController {
+public class HomeController {
     public static final String JDBC_Driver_MySQL = "com.mysql.cj.jdbc.Driver";
     public static final String JDBC_URL_MySQL = "jdbc:mysql://localhost:3306/jdbc_schema?user=nicola&password=qwertyuio&serverTimezone=" + TimeZone.getDefault().getID();
     HikariDataSource dataSource;
@@ -39,9 +33,9 @@ public class SchoolController {
         switchPanel("students-view.fxml");
     }
 
-    public void initialize() {
+    public void initialize() throws IOException {
         hikariSetup();
-        System.out.println("ciao");
+        onClasses();
     }
     private void hikariSetup() {
         HikariConfig config = new HikariConfig();

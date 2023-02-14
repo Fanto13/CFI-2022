@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ifts.school.controllers.ClassesController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ifts.school.controllers.ClassesController">
    <children>
       <TableView fx:id="tbClasses" prefHeight="332.0" prefWidth="560.0">
         <columns>
           <TableColumn fx:id="tcName" prefWidth="100.0" text="Name" />
             <TableColumn fx:id="tcRoom" prefWidth="100.0" text="Room" />
-          <TableColumn fx:id="tcTeacher" prefWidth="180.0" text="Main Teacher" />
+          <TableColumn fx:id="tcTeacher" prefWidth="180.0" text="Coordinator" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="20.0" prefWidth="560.0" spacing="20.0">

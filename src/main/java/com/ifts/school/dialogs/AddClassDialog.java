@@ -1,6 +1,6 @@
 package com.ifts.school.dialogs;
 
-import com.ifts.school.domain.SchoolClass;
+import com.ifts.school.model.SchoolClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonType;
@@ -11,20 +11,20 @@ import javafx.stage.Modality;
 
 import java.io.IOException;
 
-public class NewClassDialog extends Dialog<SchoolClass> {
+public class AddClassDialog extends Dialog<SchoolClass> {
 
     @FXML private TextField tfCoordinator;
     @FXML private TextField tfName;
     @FXML private TextField tfRoom;
 
-    public NewClassDialog() throws IOException {
+    public AddClassDialog() throws IOException {
         super();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("newclass-view.fxml"));
+        loader.setLocation(getClass().getResource("addClass-view.fxml"));
         loader.setController(this);
         DialogPane pane = loader.load();
         setDialogPane(pane);
-        setTitle("New Class");
+        setTitle("Insert a new class");
         //setHeaderText("Look, a Custom Login Dialog");
         setResizable(false);
         initModality(Modality.APPLICATION_MODAL);

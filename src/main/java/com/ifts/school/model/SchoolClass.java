@@ -1,4 +1,4 @@
-package com.ifts.school.domain;
+package com.ifts.school.model;
 
 public class SchoolClass {
     int id;

@@ -1,10 +1,7 @@
 package com.ifts.school.controllers;
 
-import com.ifts.expenses.Expense;
-import com.ifts.school.dialogs.NewClassDialog;
-import com.ifts.school.domain.SchoolClass;
-import com.zaxxer.hikari.HikariDataSource;
-import javafx.application.Platform;
+import com.ifts.school.dialogs.AddClassDialog;
+import com.ifts.school.model.SchoolClass;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,13 +10,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.util.Pair;
-import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.List;
 import java.util.Optional;
 
 public class ClassesController extends DataSourceController {
@@ -31,7 +24,7 @@ public class ClassesController extends DataSourceController {
 
     @FXML
     void onInsert() throws IOException {
-        NewClassDialog newClassDialog = new NewClassDialog();
+        AddClassDialog newClassDialog = new AddClassDialog();
         Optional<SchoolClass> result = newClassDialog.showAndWait();
         result.ifPresent(schoolClass -> {
             classes.add(schoolClass);

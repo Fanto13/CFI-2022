@@ -15,7 +15,7 @@ public class SchoolApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("school-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("controllers/home-view.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("School Manager");
         primaryStage.setScene(scene);

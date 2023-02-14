@@ -15,7 +15,7 @@ public class LoginApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("newclass-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("addClass-view.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Login");
         primaryStage.setScene(scene);
