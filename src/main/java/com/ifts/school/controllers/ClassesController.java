@@ -36,7 +36,6 @@ public class ClassesController extends DataSourceController {
 
     public void initialize() {
         setupTable();
-        fetchExpenses();
     }
 
     void setupTable() {
@@ -89,7 +88,7 @@ public class ClassesController extends DataSourceController {
         tbClasses.setEditable(true);
     }
 
-    private void fetchExpenses() {
+    public void fetchData() {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM classes");
              ResultSet rs = preparedStatement.executeQuery()) {

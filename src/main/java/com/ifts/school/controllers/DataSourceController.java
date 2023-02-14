@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class DataSourceController {
+public abstract class DataSourceController {
     HikariDataSource dataSource;
 
     public HikariDataSource getDataSource() {
@@ -15,5 +15,7 @@ public class DataSourceController {
     public void setDataSource(HikariDataSource dataSource) {
         this.dataSource = dataSource;
     }
+
+    public abstract void fetchData();
 
 }

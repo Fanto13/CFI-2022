@@ -41,6 +41,7 @@ public class SchoolController {
 
     public void initialize() {
         hikariSetup();
+        System.out.println("ciao");
     }
     private void hikariSetup() {
         HikariConfig config = new HikariConfig();
@@ -55,6 +56,7 @@ public class SchoolController {
         Parent pane = loader.load();
         DataSourceController controller = loader.getController();
         controller.setDataSource(dataSource);
+        controller.fetchData();
         rightPane.getChildren().clear();
         rightPane.getChildren().add(pane);
     }
