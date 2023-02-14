@@ -94,14 +94,11 @@ public class ClassesController extends DataSourceController {
              ResultSet rs = preparedStatement.executeQuery()) {
             classes.clear();
             while (rs.next()) {
-                /*
-                classes.add(new Expense(
-                        rs.getInt("idExpense"),
-                        rs.getDate("date"),
-                        rs.getString("description"),
-                        rs.getDouble("amount")));
-
-                 */
+                classes.add(new SchoolClass(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("coordinator"),
+                        rs.getString("room")));
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
