@@ -16,7 +16,7 @@ public class DividerApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    //prova
     public static void main(String[] args) {
         launch();
     }
