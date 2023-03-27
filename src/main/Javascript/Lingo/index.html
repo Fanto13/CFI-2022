@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gioco del Lingo</title> 
+    <link rel="stylesheet" href="./styles/index.css"> 
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+  </head> 
+  <body> 
+    <h1>Gioco del Lingo</h1> 
+    <p>Inserisci una parola italiana di 5 lettere, puoi cliccare il bottone o premere invio!</p> 
+    <form> 
+      <input type="text" id="guess" maxlength="5"> 
+      <button type="button" id="submit">Invio</button> 
+    </form> 
+    <div id="lingo-board"></div> 
+    <p>Tentativi rimasti: <span id="attempts">5</span></p> 
+    <script src="./scripts/funzioni.js"></script> 
+  </body> 
+</html> 
